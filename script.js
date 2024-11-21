@@ -4,6 +4,7 @@ const resultsPerPage = 10;
 
 function searchICD10() {
     const input = document.getElementById('searchInput').value.toLowerCase();
+    const keywords = input.split(/\s+/).filter(word => word); // Split input into words and remove empty entries
     const resultDiv = document.getElementById('result');
     const viewMoreBtn = document.getElementById('viewMoreBtn');
     resultDiv.innerHTML = '';
@@ -21,7 +22,13 @@ function searchICD10() {
             const rows = data.split('\n').slice(1); // Skip header row
             allResults = rows.filter(row => {
                 const [code, description] = row.split(',');
-                return code && description && (code.toLowerCase().includes(input) || description.toLowerCase().includes(input));
+                if (code && description) {
+                    const lowerDescription = description.toLowerCase();
+                    return keywords.every(keyword => 
+                        code.toLowerCase().includes(keyword) || lowerDescription.includes(keyword)
+                    );
+                }
+                return false;
             });
 
             if (allResults.length > 0) {
