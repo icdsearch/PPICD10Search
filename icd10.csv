@@ -10233,6 +10233,7 @@
 "R9.8,Other specified symptoms and signs involving the circulatory and respiratory systems"
 "R10,Abdominal and pelvic pain"
 "R10,Acute abdomen"
+"R10.0,Acute abdominal pain"
 "R10.1,Pain localized to upper abdomen"
 "R10.2,Pelvic and perineal pain"
 "R10.3,Pain localized to other parts of lower abdomen"
